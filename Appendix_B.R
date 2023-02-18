@@ -35,11 +35,6 @@ make_null_index <- function(this_group, group_sizes, constructed=NULL) {
     this_group_size = group_sizes[this_group]
     
     # create matrix of new combinations, equal to whatever is left
-    #new_combinations <- apply(constructed, MARGIN=1, function(row) {
-    #  return( setdiff(index_values,row) )
-    #}) %>% t()
-    
-    # create matrix of new combinations, equal to whatever is left
     new_combinations <- apply(constructed, MARGIN=1, function(row) {
       return( setdiff(index_values,row) )
     }) %>% matrix(ncol=group_sizes[this_group],byrow = TRUE)
