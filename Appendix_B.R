@@ -126,7 +126,7 @@ tbl_6 <- list()
 tbl_6$treatment <- c(rep("UK",4), rep("US",4), rep("Single",4))
 tbl_6$levels <- c(rep(1,4), rep(2,4), rep(3,4)) %>% factor()
 tbl_6$earnings <- c( -0.61, -3.64, 0.82, 1.39, 3.84, 1.04, 3.17, 
-  3.97, 0.22, -0.24, 0.42, 1.13 )
+                     3.97, 0.22, -0.24, 0.42, 1.13 )
 
 # Table 7 (Smith (1964): selected data from Table III.)
 tbl_7 <- list()
@@ -885,11 +885,6 @@ n_null
 sum( abs(null_t) - abs(obs_t) >= -float.tol)
 ( sum( abs(null_t) - abs(obs_t) >= -float.tol)/n_null ) %>% round(3)
 
-# Print components of one-sided test
-n_null
-sum( null_t - obs_t >= -float.tol)
-( sum( null_t - obs_t >= -float.tol)/n_null ) %>% round(3)
-
 # Clear variables
 rm(n_null,n_x,n_y,n_z,null_x,null_y,null_t,obs_t,x,y,z,perm_index_x,
    perm_index_y)
@@ -935,9 +930,6 @@ n_null
 sum( null_H - obs_H >= -float.tol)
 ( sum( null_H - obs_H >= -float.tol)/n_null ) %>% round(3)
 
-# Print approximate p-value
-kruskal.test(y,x)$p.value %>% round(3)
-
 # Clear variables
 rm(x,y,n,n_g,K,obs_H,perm_index_y,null_y,n_null,null_H,i)
 
@@ -963,7 +955,7 @@ n <- length(y)
 J.fun <- function(x,y) {
   
   x_levels <- as.numeric(x)
-    
+  
   logic_mat <- sapply(x_levels ,function(e){return(e>x_levels)})
   above_mat <- sweep(logic_mat, MARGIN=2, y, `*`)
   below_mat <- sweep(logic_mat, MARGIN=1, y, `*`)
@@ -1392,7 +1384,7 @@ n <- length(y)
 J.fun <- function(x,y) {
   
   x_levels <- as.numeric(x)
-    
+  
   logic_mat <- sapply(x_levels ,function(e){return(e>x_levels)})
   above_mat <- sweep(logic_mat, MARGIN=2, y, `*`)
   below_mat <- sweep(logic_mat, MARGIN=1, y, `*`)
@@ -1599,7 +1591,7 @@ null_res_y <- permutations(n_y, n_y, res_y, set=FALSE)
 null_pred_y <- matrix(
   rep(pred_y,
       dim(null_res_y)[1]
-      ),
+  ),
   ncol = n_y,
   byrow = TRUE
 )
